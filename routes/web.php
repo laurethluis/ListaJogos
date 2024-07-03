@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JogosController;
+use App\Livewire\Games\GameComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,37 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-//route::view('/jogos','jogos');
-
-//route::view('/jogos','jogos',////  ['name'=>'GTA']);
-
-//route::get('/jogos/{id?}/{name?}', function ($id=null,$name=null){
-//return view('jogos',['idjogo'=>$id,'nomejogo'=>$name]);
- 
-//})->where(['id','[0-9]+','name'=>'[a-z]+']);   
-
-//route::get('/jogos',function(){
- //   return view('jogos');
-//});
-
-
-//route::get('/jogos',[JogosController::class, 'index']); 
-
-
-//route::get('/home',function (){
-  //  return view('welcome');
-//})->name('home-index');
-
- 
+Route::get('/',GameComponent::class)->name('jogos-index');
 
 Route::prefix('jogos')->group(function(){
-
-Route::get('/',[JogosController::class,'index'])->name('jogos-index');
+//Route::get('/',[JogosController::class,'index'])->name('jogos-index');
 Route::get('/create',[JogosController::class,'create'])->name('jogos-create');
 Route::post('/store',[JogosController::class,'store'])->name('jogos-store');
 Route::get('/edit/{id}',[JogosController::class,'edit'])->where('id','[0-9]+')->name('jogos-edit');
-Route::delete('/delete',[JogosController::class,'destroy'])->where('id','[0-9]+')->name('jogos-destroy');
+Route::get('/delete/{id}',[JogosController::class,'destroy'])->where('id','[0-9]+')->name('jogos-destroy');
 Route::get('/show',[JogosController::class,'show'])->name('show.games');
 
 

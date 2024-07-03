@@ -51,9 +51,9 @@ public function store(Request $request)
   }
 
   public function destroy($id)
-  {
+  {   
     Jogo::where('id',$id)->delete();
-    return redirect()->route('jogos-index');
+    return redirect()->back();
    
   }
 
